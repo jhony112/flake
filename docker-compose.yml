@@ -1,0 +1,42 @@
+version: "3"
+services:
+  postgres-db:
+    restart: always
+    image: postgres:10
+    container_name: squad-postgres-db
+    environment:
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_DB: ${DB_NAME}
+    volumes:
+      - squad-db-data:/postgres-db-data
+    ports:
+      - ${DB_PORT}:5432
+
+  redis-server:
+    restart: always
+    image: redis:7.0.5
+    container_name: squad-redis-server
+    command: redis-server --requirepass "Ecommerce-1234"
+    ports:
+      - 6377:6379
+
+  file-storage:
+    restart: always
+    image: minio/minio:RELEASE.2022-06-11T19-55-32Z
+    container_name: squad-file-storage
+    environment:
+      MINIO_ROOT_USER: admin
+      MINIO_ROOT_PASSWORD: Ecommerce-1234
+      MINIO_SERVER_URL: "http://localhost:9000"
+    command: server --console-address ":9001" /file-storage-volume
+    volumes:
+      - file-storage-volume:/file-storage-volume
+    ports:
+      # Files will be served via this port
+      - 9004:9000
+      # Admin console can be access via this port
+      - 9006:9001
+volumes:
+  squad-db-data:
+  file-storage-volume:
