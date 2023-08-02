@@ -1,0 +1,63 @@
+const GATEWAY_TYPES = {
+    Paystack: 1,
+    ISW: 2,
+    Cgate: 3,
+    CyberSourceLocal: 4,
+    CyberSourceForeign: 5,
+    GtbTransfer: 6,
+    GtbCardTransfer: 7,
+    GtbDirectTransfer: 8,
+    Mpgs: 9,
+    GtbRecurring: 10,
+    Mpesa: 11,
+    MerchantUssd: 12,
+    VirtualAccount: 13,
+    POSVirtualAccount: 14,
+}
+
+const PAYMENT_TYPES = {
+    None: 0,
+    Card: 1,
+    Bank: 2,
+    Ussd: 3,
+    QR: 4,
+    Transfer: 5,
+    Tokenized: 6,
+    DirectTransfer: 7,
+    Mpesa: 8,
+    MerchantUssd: 9,
+    VirtualAccount: 10,
+}
+const PAYMENT_STATUS = {
+    Initiated: 0,
+    Success: 1,
+    Failed: 2,
+    Pending: 3,
+    ValidateOTP: 4,
+    ValidateDOB: 5,
+    ValidatePhone: 6,
+    Expired: 7,
+    Abandoned: 8,
+    ValidateURL: 9,
+    ValidatePin: 10,
+    ValidateBillingAddress: 11,
+    OtpEnroll: 12,
+    Pa_Setup: 13,
+    Pa_Enrollment: 14,
+    Refunded: 15,
+    Payer_Authentication: 16,
+    Insufficient_Funds: 17,
+    ThreeDSecure: 18,
+    ValidateTOKEN: 19,
+    ValidateMandate: 20,
+}
+const TOKEN_TYPES = {
+    USER: 'user',
+    ADMIN: 'admin',
+    SERVICE: 'service',
+    ACCESS: 'access',
+    REFRESH: 'refresh',
+    RESET_PASSWORD: 'resetPassword',
+}
+
+module.exports = { GATEWAY_TYPES, PAYMENT_STATUS, TOKEN_TYPES, PAYMENT_TYPES }
